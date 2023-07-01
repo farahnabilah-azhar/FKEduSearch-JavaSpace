@@ -1,0 +1,341 @@
+ /* CSS for side navigation pane */
+ .sidenav {
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #f1f1f1;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 16px;
+    color: #333;
+    display: block;
+}
+
+.sidenav a:hover {
+    background-color: #ddd;
+}
+
+/* Body */
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* CSS for content area */
+.content {
+    margin-left: 200px;
+    padding: 20px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+    padding-right: 10px;
+}
+
+.logo-text {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.content-table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.content-table th,
+.content-table td {
+    padding: 10px;
+    text-align: left;
+}
+
+.content-table th {
+    background-color: #f1f1f1;
+}
+
+.content-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.content-table tr:hover {
+    background-color: #ddd;
+}
+
+.content-table td:last-child {
+    white-space: nowrap;
+}
+
+.white-box {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Add Form */
+.add-content-form {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+}
+
+.add-content-button {
+    margin-bottom: 20px;
+    text-align: right;
+}
+
+.add-content-button a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #B7FFEE;
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.add-content-button a:hover {
+    background-color: #a2f5e1;
+}
+
+/* Add Form Navigate to other page */
+.add-form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  }
+
+  .add-form h3 {
+    margin-top: 0;
+    text-align: center;
+  }
+
+  .add-form label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .add-form input,
+  .add-form select {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    /* Add this line */
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-bottom: 10px;
+  }
+
+  .add-form button {
+    padding: 8px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+
+  .add-form button:hover {
+    background-color: #555;
+  }
+
+/* Edit Form */
+.edit-content-form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  }
+
+  .edit-content-form h3 {
+    margin-top: 0;
+    text-align: center;
+  }
+
+  .edit-content-form label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .edit-content-form input,
+  .edit-content-form select,
+  .edit-content-form textarea {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    /* Add this line */
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-bottom: 10px;
+  }
+
+  .edit-content-form button {
+    padding: 8px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+
+  .edit-content-form button:hover {
+    background-color: #555;
+  }
+
+.form-container {
+    background-color: #fff;
+    width: 300px;
+    padding: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.form-container h3 {
+    margin-top: 0;
+}
+
+.form-container label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-container input[type="text"],
+.form-container input[type="password"],
+.form-container select {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.form-container button[type="submit"] {
+    padding: 5px 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.sort-button{
+    padding: 5px 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.header {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+    background-color: #f1f1f1;
+}
+
+.header a {
+    margin-left: 10px;
+    text-decoration: none;
+    color: #333;
+}
+
+.toggle-button {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+}
+
+.toggle-button input[type="checkbox"] {
+    display: none;
+}
+
+.toggle-label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    cursor: pointer;
+    background-color: #ccc;
+    border-radius: 30px;
+    transition: background-color 0.3s;
+}
+
+.toggle-label:before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 26px;
+    height: 26px;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.3s;
+}
+
+.toggle-button input:checked + .toggle-label {
+    background-color: #2196F3;
+}
+
+.toggle-button input:checked + .toggle-label:before {
+    transform: translateX(30px);
+}
+
+.total-users {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Style for the chart container */
+.chart-container {
+    width: 20%;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.search-form {
+    margin-bottom: 7px;
+    text-align: right;
+}
+
