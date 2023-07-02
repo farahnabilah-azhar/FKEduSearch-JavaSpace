@@ -34,6 +34,7 @@
             <a href="homepage.php">Home</a>
             <a href="manage_post.php">Manage Post</a>
             <a href="manage_complaint.php">Manage Complaint</a>
+            <a href="userPost.php">My Post Statistics</a>
             <a href="rating.php">Rate Us</a>
         ';
         // No additional links for users
