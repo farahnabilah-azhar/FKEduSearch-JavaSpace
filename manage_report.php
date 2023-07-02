@@ -95,18 +95,14 @@ $conn->close();
                     <!-- Your form inputs here -->
                     <input type="text" name="search" placeholder="Search">
                     <button type="submit">Search</button><br><br>
-                    <div class="content-table"><button onclick="sortTable()">Sort</button></div>
+                    <div class="content-table"><button type="button" onclick="sortTable('postTable')">Sort</button></div>
                 </form>
                 
             </div>
-            
+            <table id="postTable" class="content-table">       
     
   
-</form>
 
-            
-
-            <table id="myTable" class="content-table">
                 <thead>
                     <tr>
                         <th>Post ID</th>
@@ -299,21 +295,29 @@ if (isset($_GET['search'])) {
 
 
 <div class="white-box">
-            <h2>Complaint</h2>
-            <table id="mytable" class="content-table">
-              <div class="content-table"><button onclick="sortTable()">Sort</button></div>
-                <thead>
-                    <tr>
-                        <th>ComplaintID ID</th>
-                        <th>UserID</th>
-                        <th>FeedbackID</th>
-                        <th>ComplaintType</th>
-                        <th>ComplaintDateTime</th>
-                        <th>ComplaintStatus</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
+<h2>All complaints</h2>
+      <div class="content-table">
+        <!-- Search Form -->
+        <form action="" method="GET" class="search-form">
+          <!-- Your form inputs here -->
+          <input type="text" name="search" placeholder="Search">
+          <button type="submit">Search</button><br><br>
+          <div class="content-table"><button type="button" onclick="sortTable('complaintTable')">Sort</button></div>
+        </form>
+      </div>
+
+      <table id="complaintTable" class="content-table">
+        <thead>
+          <tr>
+            <th>Complaint ID</th>
+            <th>Username</th>
+            <th>Title</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
                   
                   <?php
                      include 'db_connection.php';
@@ -400,67 +404,35 @@ if (isset($_GET['search'])) {
   });
 </script>
 
-...
 <script>
-    function sortTable() {
-        var table, rows, switching, i, x, y, shouldSwitch;
-        table = document.getElementById("myTable");
-        switching = true;
-        while (switching) {
-            switching = false;
-            rows = table.rows;
-            for (i = 1; i < (rows.length - 1); i++) {
-                shouldSwitch = false;
-                x = rows[i].getElementsByTagName("TD")[0];
-                y = rows[i + 1].getElementsByTagName("TD")[0];
-                if (Number(x.innerHTML) > Number(y.innerHTML)) {
-                    shouldSwitch = true;
-                    break;
-                }
-            }
-            if (shouldSwitch) {
-                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-                switching = true;
-            }
+    function sortTable(tableId) {
+      var table, rows, switching, i, x, y, shouldSwitch;
+      table = document.getElementById(tableId);
+      switching = true;
+
+      while (switching) {
+        switching = false;
+        rows = table.rows;
+
+        for (i = 1; i < (rows.length - 1); i++) {
+          shouldSwitch = false;
+
+          x = rows[i].getElementsByTagName("td")[0];
+          y = rows[i + 1].getElementsByTagName("td")[0];
+
+          if (Number(x.innerHTML) > Number(y.innerHTML)) {
+            shouldSwitch = true;
+            break;
+          }
         }
-    }
-</script>
-...
 
-
-
-...
-<script>
-    function sortTable() {
-        var table, rows, switching, i, x, y, shouldSwitch;
-        table = document.getElementById("myTable");
-        switching = true;
-        while (switching) {
-            switching = false;
-            rows = table.rows;
-            for (i = 1; i < (rows.length - 1); i++) {
-                shouldSwitch = false;
-                x = rows[i].getElementsByTagName("TD")[0];
-                y = rows[i + 1].getElementsByTagName("TD")[0];
-                if (Number(x.innerHTML) > Number(y.innerHTML)) {
-                    shouldSwitch = true;
-                    break;
-                }
-            }
-            if (shouldSwitch) {
-                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-                switching = true;
-            }
+        if (shouldSwitch) {
+          rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+          switching = true;
         }
+      }
     }
-</script>
-...
-
-
-
-
-
-
+  </script>
 </body>
 
 </html>

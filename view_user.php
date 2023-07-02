@@ -34,7 +34,7 @@ session_start();
       include 'db_connection.php';
 
       // Retrieve the user data from the database
-      $stmt = $conn->prepare("SELECT UserName, UserPassword, UserEmail, UserRole, UserStatus,Likes,Comment,rating FROM user WHERE UserID = ?");
+      $stmt = $conn->prepare("SELECT UserName, UserPassword, UserEmail, UserRole, UserStatus, Likes, Comment, rating FROM user WHERE UserID = ?");
       $stmt->bind_param("i", $userID);
       $stmt->execute();
       $result = $stmt->get_result();
@@ -52,25 +52,28 @@ session_start();
 
       <!-- User Details -->
       <table>
-      <div class="user-details">
-        <h3>Username: <?php echo $row['UserName']; ?></h3>
-        <p>Password: <?php echo $row['UserPassword']; ?></p>
-        <p>Email: <?php echo $row['UserEmail']; ?></p>
-        <p>Role: <?php echo $row['UserRole']; ?></p>
-        <p>Status: <?php echo $row['UserStatus']; ?></p>
-        <p>Number of Likes: <?php echo $row['Likes']; ?></p>
-        <p>Number of Comments: <?php echo $row['Comment']; ?></p>
-        <p>Rating: <?php echo $row['rating']; ?></p>
-      </div>
-    </table>
+        <div class="user-details">
+          <h3>Username: <?php echo $row['UserName']; ?></h3>
+          <p>Password: <?php echo $row['UserPassword']; ?></p>
+          <p>Email: <?php echo $row['UserEmail']; ?></p>
+          <p>Role: <?php echo $row['UserRole']; ?></p>
+          <p>Status: <?php echo $row['UserStatus']; ?></p>
+          <p>Number of Likes: <?php echo $row['Likes']; ?></p>
+          <p>Number of Comments: <?php echo $row['Comment']; ?></p>
+          <p>Rating: <?php echo $row['rating']; ?></p>
+        </div>
+      </table>
 
-    
-
-<!-- User Details -->
-<!-- User details content -->
-
-
-      
+      <!-- QR Code -->
+      <?php
+      $data = array(
+        'UserID' => $userID,
+        'Rating' => $row['rating']
+      );
+      $qrData = json_encode($data);
+      $qrCodeURL = 'https://api.qrserver.com/v1/create-qr-code/?data=' . urlencode($qrData) . '&amp;size=200x200';
+      ?>
+      <img src="<?php echo $qrCodeURL; ?>" alt="QR Code">
 
       <button type="button" onclick="goBack()">Go Back</button>
 
