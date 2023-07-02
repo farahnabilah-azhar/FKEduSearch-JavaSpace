@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 01, 2023 at 01:34 AM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: Jul 02, 2023 at 02:04 AM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -145,6 +145,16 @@ CREATE TABLE `publicationauthor` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `ratings`
+--
+
+CREATE TABLE `ratings` (
+  `rating` int(222) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `research`
 --
 
@@ -181,20 +191,23 @@ CREATE TABLE `user` (
   `UserAcademicStatus` varchar(255) NOT NULL,
   `UserCertificate` varchar(255) NOT NULL,
   `UserQRCode` varchar(255) NOT NULL,
-  `UserStatus` varchar(50) NOT NULL
+  `UserStatus` varchar(50) NOT NULL,
+  `Likes` int(222) NOT NULL,
+  `Comment` int(222) NOT NULL,
+  `rating` int(222) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`UserID`, `UserName`, `UserPassword`, `UserEmail`, `UserRole`, `CategoryID`, `UserAcademicStatus`, `UserCertificate`, `UserQRCode`, `UserStatus`) VALUES
-(1, 'admin', 'admin', 'admin@gmail.com', 'admin', 2, 'Bachelor', '', '', 'active'),
-(2, 'admin', 'admin', 'admin@gmail.com', 'admin', 1, 'Bachelor', 'certificate/6493dbd1dc339_CA20059.pdf', 'qr-user/6493dbd1dc339_CA20059.pdf.png', 'active'),
-(3, 'user', 'user', 'user@gmail.com', 'user', 2, 'Master', 'certificate/6493dbdf21f77_CA20039_THESIS.pdf', 'qr-user/6493dbdf21f77_CA20039_THESIS.pdf.png', 'active'),
-(4, 'expertise', 'expertise', 'expertise@gmail.com', 'expertise', 3, 'PhD', 'certificate/649e61416648f_CA20059.pdf', 'qr-user/649e61416648f_CA20059.pdf.png', 'active'),
-(5, 'ca20039', '1234abcd', 'ca20039@student.ump.edu.my', 'expertise', 4, 'Master', 'certificate/6493dd5685fe4_CA20039_THESIS.pdf', 'qr-user/6493dd5685fe4_CA20039_THESIS.pdf.png', 'active'),
-(6, 'ca20049', '1234abcd', '123', 'user', 3, 'Master', '6493e94d50371_', 'qr-user/6493e94d50371_.png', 'active');
+INSERT INTO `user` (`UserID`, `UserName`, `UserPassword`, `UserEmail`, `UserRole`, `CategoryID`, `UserAcademicStatus`, `UserCertificate`, `UserQRCode`, `UserStatus`, `Likes`, `Comment`, `rating`) VALUES
+(1, 'admin', 'admin', 'admin@gmail.com', 'admin', 2, 'Bachelor', '', '', 'active', 0, 0, 0),
+(2, 'admin', 'admin', 'admin@gmail.com', 'admin', 1, 'Bachelor', 'certificate/6493dbd1dc339_CA20059.pdf', 'qr-user/6493dbd1dc339_CA20059.pdf.png', 'active', 0, 0, 0),
+(3, 'user', 'user', 'user@gmail.com', 'user', 2, 'Master', 'certificate/6493dbdf21f77_CA20039_THESIS.pdf', 'qr-user/6493dbdf21f77_CA20039_THESIS.pdf.png', 'active', 0, 0, 0),
+(4, 'expertise', 'expertise', 'expertise@gmail.com', 'expertise', 3, 'PhD', 'certificate/649e61416648f_CA20059.pdf', 'qr-user/649e61416648f_CA20059.pdf.png', 'active', 0, 0, 0),
+(5, 'ca20039', '1234abcd', 'ca20039@student.ump.edu.my', 'expertise', 4, 'Master', 'certificate/6493dd5685fe4_CA20039_THESIS.pdf', 'qr-user/6493dd5685fe4_CA20039_THESIS.pdf.png', 'active', 0, 0, 0),
+(6, 'ca20049', '1234abcd', '123', 'user', 3, 'Master', '6493e94d50371_', 'qr-user/6493e94d50371_.png', 'active', 0, 0, 0);
 
 --
 -- Indexes for dumped tables
