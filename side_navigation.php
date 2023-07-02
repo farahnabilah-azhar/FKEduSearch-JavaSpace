@@ -24,6 +24,9 @@
             <a href="manage_research.php">Manage Research</a>
             <a href="manage_category.php">Manage Category</a>
             <a href="manage_complaint.php">Manage Complaint</a>
+            <a href="manage_report.php">Manage Reports</a>
+            <a href="user_analytic.php">User Analytic</a>
+        
             <!-- Add more admin-specific links if needed -->
         ';
     } elseif (isset($userRole) && $userRole == 'user') {
@@ -31,6 +34,7 @@
             <a href="homepage.php">Home</a>
             <a href="manage_post.php">Manage Post</a>
             <a href="manage_complaint.php">Manage Complaint</a>
+            <a href="rating.php">Rate Us</a>
         ';
         // No additional links for users
     } elseif (isset($userRole) && $userRole == 'expertise') {
