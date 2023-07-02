@@ -11,7 +11,7 @@
 
 <body>
     <!-- Side navigation pane -->
-    <?php include 'includes/menu.php'; ?>
+    <?php include 'side_navigation.php'; ?>
 
     <div class="content">
         <!-- Header area -->
