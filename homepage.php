@@ -191,7 +191,7 @@ $page = 'homepage';
                 $n = $row['likes'];
 
                 mysqli_query($link, "INSERT INTO likes (user_ID, post_ID) VALUES (1, $post_ID)");
-                mysqli_query($link, "UPDATE userpost SET likes=$n+1 WHERE post_ID=$post_ID");
+                mysqli_query($link, "UPDATE userpost SET likes=$n+1 WHERE PostID=$post_ID");
 
                 echo $n + 1;
                 exit();
@@ -202,14 +202,14 @@ $page = 'homepage';
 
         if (isset($_POST['unliked'])) {
             $post_ID = $_POST['post_ID'];
-            $result = mysqli_query($link, "SELECT * FROM userpost WHERE post_ID=$post_ID");
+            $result = mysqli_query($link, "SELECT * FROM userpost WHERE PostID=$post_ID");
 
             if ($result) {
                 $row = mysqli_fetch_array($result);
                 $n = $row['likes'];
 
                 mysqli_query($link, "DELETE FROM likes WHERE post_ID=$post_ID AND user_ID=1");
-                mysqli_query($link, "UPDATE userpost SET likes=$n-1 WHERE post_ID=$post_ID");
+                mysqli_query($link, "UPDATE userpost SET likes=$n-1 WHERE PostID=$post_ID");
 
                 echo $n - 1;
                 exit();
@@ -233,7 +233,7 @@ $page = 'homepage';
                 <div style="padding: 2px; margin-top: 5px;">
                     <?php
                     // Determine if the user has already liked this post
-                    $results = mysqli_query($link, "SELECT * FROM likes WHERE user_ID= AND post_ID=" . $row['PostID']);
+                    $results = mysqli_query($link, "SELECT * FROM likes WHERE user_ID=1 AND post_ID=" . $row['PostID']);
 
                     if (mysqli_num_rows($results) == 1): ?>
                         <!-- User already likes the post -->
