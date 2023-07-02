@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 02, 2023 at 02:04 AM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- Generation Time: Jul 02, 2023 at 06:09 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -42,6 +42,19 @@ INSERT INTO `category` (`CategoryID`, `CategoryName`) VALUES
 (3, 'Software'),
 (4, 'Artificial Intelligence'),
 (5, 'Graphic');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comments`
+--
+
+CREATE TABLE `comments` (
+  `comment_ID` int(11) NOT NULL,
+  `post_ID` int(11) DEFAULT NULL,
+  `comments_description` varchar(255) DEFAULT NULL,
+  `comments_date` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -101,6 +114,27 @@ INSERT INTO `expert` (`ExpertID`, `UserID`, `ExpertName`, `ExpertResearchArea`, 
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `likes`
+--
+
+CREATE TABLE `likes` (
+  `like_ID` int(11) NOT NULL,
+  `user_ID` int(11) NOT NULL,
+  `post_ID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `likes`
+--
+
+INSERT INTO `likes` (`like_ID`, `user_ID`, `post_ID`) VALUES
+(0, 0, 0),
+(0, 0, 0),
+(0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `post`
 --
 
@@ -145,6 +179,34 @@ CREATE TABLE `publicationauthor` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `rating`
+--
+
+CREATE TABLE `rating` (
+  `rating_ID` int(10) NOT NULL,
+  `expert_ID` int(10) NOT NULL,
+  `user_ID` int(10) NOT NULL,
+  `post_answerID` int(10) NOT NULL,
+  `rating_value` int(10) NOT NULL,
+  `rating_Date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `rating`
+--
+
+INSERT INTO `rating` (`rating_ID`, `expert_ID`, `user_ID`, `post_answerID`, `rating_value`, `rating_Date`) VALUES
+(1, 0, 0, 0, 3, '2023-06-18'),
+(2, 0, 0, 0, 1, '2023-06-18'),
+(3, 0, 0, 0, 1, '2023-06-19'),
+(4, 0, 0, 0, 1, '2023-06-21'),
+(5, 0, 0, 0, 4, '2023-06-21'),
+(6, 0, 0, 0, 3, '2023-06-22'),
+(7, 0, 0, 0, 5, '2023-06-22');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `ratings`
 --
 
@@ -174,6 +236,28 @@ CREATE TABLE `research` (
 INSERT INTO `research` (`ResearchID`, `ResearchTitle`, `ResearchDescription`, `ResearchArea`, `ResearchDate`, `ResearchType`) VALUES
 (3, 'vvv', 'vvw', 'network', '2023-06-30', 'book'),
 (4, 'ENSA', 'blabla', 'cybersecurity', '2023-06-18', 'journal');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `socialmedia`
+--
+
+CREATE TABLE `socialmedia` (
+  `socialMedia_ID` int(10) NOT NULL,
+  `user_ID` int(10) NOT NULL,
+  `expert_ID` int(10) NOT NULL,
+  `instagram_userName` varchar(50) NOT NULL,
+  `linkedin_userName` varchar(100) NOT NULL,
+  `User_certificate` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `socialmedia`
+--
+
+INSERT INTO `socialmedia` (`socialMedia_ID`, `user_ID`, `expert_ID`, `instagram_userName`, `linkedin_userName`, `User_certificate`) VALUES
+(1, 2, 3, 'abc', 'def', 'NSA_CA20049_LAB4.pdf');
 
 -- --------------------------------------------------------
 
@@ -209,6 +293,26 @@ INSERT INTO `user` (`UserID`, `UserName`, `UserPassword`, `UserEmail`, `UserRole
 (5, 'ca20039', '1234abcd', 'ca20039@student.ump.edu.my', 'expertise', 4, 'Master', 'certificate/6493dd5685fe4_CA20039_THESIS.pdf', 'qr-user/6493dd5685fe4_CA20039_THESIS.pdf.png', 'active', 0, 0, 0),
 (6, 'ca20049', '1234abcd', '123', 'user', 3, 'Master', '6493e94d50371_', 'qr-user/6493e94d50371_.png', 'active', 0, 0, 0);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `userpost`
+--
+
+CREATE TABLE `userpost` (
+  `PostID` int(10) NOT NULL,
+  `UserID` int(10) NOT NULL,
+  `ExpertID` int(10) NOT NULL,
+  `PostTitle` varchar(10) NOT NULL,
+  `PostContent` varchar(10) NOT NULL,
+  `PostCreatedDate` date NOT NULL,
+  `CategoryID` int(10) NOT NULL,
+  `PostStatus` varchar(10) NOT NULL,
+  `post_remainingDuration` time(6) NOT NULL,
+  `text` text NOT NULL,
+  `likes` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 --
 -- Indexes for dumped tables
 --
@@ -218,6 +322,13 @@ INSERT INTO `user` (`UserID`, `UserName`, `UserPassword`, `UserEmail`, `UserRole
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`CategoryID`);
+
+--
+-- Indexes for table `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`comment_ID`),
+  ADD KEY `post_ID` (`post_ID`);
 
 --
 -- Indexes for table `complaint`
@@ -238,10 +349,27 @@ ALTER TABLE `post`
   ADD PRIMARY KEY (`PostID`);
 
 --
+-- Indexes for table `rating`
+--
+ALTER TABLE `rating`
+  ADD PRIMARY KEY (`rating_ID`),
+  ADD KEY `post_answerID` (`post_answerID`),
+  ADD KEY `expert_ID` (`expert_ID`),
+  ADD KEY `user_ID` (`user_ID`);
+
+--
 -- Indexes for table `research`
 --
 ALTER TABLE `research`
   ADD PRIMARY KEY (`ResearchID`);
+
+--
+-- Indexes for table `socialmedia`
+--
+ALTER TABLE `socialmedia`
+  ADD PRIMARY KEY (`socialMedia_ID`),
+  ADD KEY `expert_ID` (`expert_ID`),
+  ADD KEY `user_ID` (`user_ID`);
 
 --
 -- Indexes for table `user`
@@ -258,6 +386,12 @@ ALTER TABLE `user`
 --
 ALTER TABLE `category`
   MODIFY `CategoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `comment_ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `complaint`
@@ -278,10 +412,22 @@ ALTER TABLE `post`
   MODIFY `PostID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
+-- AUTO_INCREMENT for table `rating`
+--
+ALTER TABLE `rating`
+  MODIFY `rating_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT for table `research`
 --
 ALTER TABLE `research`
   MODIFY `ResearchID` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `socialmedia`
+--
+ALTER TABLE `socialmedia`
+  MODIFY `socialMedia_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `user`

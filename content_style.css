@@ -247,14 +247,6 @@ body {
     cursor: pointer;
 }
 
-.sort-button{
-    padding: 5px 10px;
-    background-color: #333;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-}
-
 .close-btn {
     position: absolute;
     top: 10px;
@@ -329,7 +321,7 @@ body {
 
 /* Style for the chart container */
 .chart-container {
-    width: 20%;
+    width: 110%;
     max-width: 600px;
     margin: 20px auto;
 }
@@ -339,3 +331,42 @@ body {
     text-align: right;
 }
 
+.chart {
+    width: 100%;
+    height: 100%;
+}
+
+.chart h3 {
+    text-align: center;
+}
+
+.chart-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .chart canvas {
+    width: 100% !important;
+    height: 400px !important;
+  }
+  
+   body {
+	padding-top: 100px;
+  }
+
+  .post {
+	width: 30%;
+	margin: 10px auto;
+	border: 1px solid #cbcbcb;
+	padding: 5px 10px 0px 10px;
+}
+.like, .unlike, .likes_count {
+	color: blue;
+}
+.hide {
+	display: none;
+}
+.fa-thumbs-up, .fa-thumbs-o-up {
+	transform: rotateY(-180deg);
+	font-size: 1.3em;
+}

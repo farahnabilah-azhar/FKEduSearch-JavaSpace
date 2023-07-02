@@ -1,4 +1,5 @@
 <?php
+include 'FKEduSearch (new for test)/logout.php';
 // Start the session
 session_start();
 
